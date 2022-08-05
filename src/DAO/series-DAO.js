@@ -40,9 +40,12 @@ export class SerieDAO {
         console.log(serieUpdate)
         return new Promise ((resolve,reject)=>{
             this.bdS.all(`UPDATE SERIES SET title = ?, description = ?, genre = ?, seasons = ?, urlimg = ? WHERE id = ?` , 
-            serieUpdate,(error)=>{
+            serieUpdate,(error, result)=>{
                 if(error) reject(error)
-                else resolve("UPDATED")
+                else {
+                    console.log(result);
+                    resolve("UPDATED");
+                } 
             })
         })
      }

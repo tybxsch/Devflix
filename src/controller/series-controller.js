@@ -50,7 +50,6 @@ export const series = (app, bdS)=>{
         SeriesDAO.listarSeriesID(req.params.id)
         .then((result) => {
             const series = result[0];
-           
             const serieUpdate = new Serie(
                 body.title || series.title, 
                 body.description || series.description, 
@@ -64,10 +63,10 @@ export const series = (app, bdS)=>{
                 serieUpdate.description,
                 serieUpdate.genre,
                 serieUpdate.seasons,
-                series.id,
-                serieUpdate.urlimg
+                serieUpdate.urlimg,
+                series.id
                 ];
-        
+                
                 SeriesDAO.alterarSeries(param)
                   .then((resultUpdated) => {
                     console.log(resultUpdated);
